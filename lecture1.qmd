@@ -1,0 +1,223 @@
+---
+engine: knitr
+format: live-html
+webr:
+  packages:
+  - ggplot2
+  - datasauRus
+
+title: "Lecture 1"
+filters:
+  - naquiz
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+::: callout-tip
+Lecture 1 exercises using naquiz/nareal
+:::
+
+```{r set_up}
+library(tidyverse)
+library(data.table)
+library(patchwork)
+library(kableExtra)
+```
+
+## Power of visualization
+
+You are provided with a table summarising several datasets. Look at the summary statistics carefully and answer the questions below based on your interpretation of the data.
+
+```{r}
+
+library(datasauRus)
+data(datasaurus_dozen)
+dat <- datasaurus_dozen
+setDT(dat)
+
+
+dat[, {
+  x_mean  <- mean(x)
+  x_sd <- sd(x)
+  y_mean <- mean(y)
+  y_sd <- sd(y)
+  corr <- cor(x, y)
+  list(x_mean, x_sd,
+  y_mean, y_sd, corr)
+}, by = "dataset"] |>
+  
+  kbl()
+
+```
+
+#### Question 1
+
+::: question
+Since the datasets have nearly identical means, standard deviations, and correlations, what can you infer about the spread of points?
+
+::: choices
+::: choice
+All datasets will likely have identical visual patterns
+:::
+
+::: choice
+The datasets may have similar visual spreads but differ in shape
+:::
+
+::: {.choice .correct-choice}
+None, no conclusions about the distribution of the points can be made
+:::
+:::
+:::
+
+#### Question 2
+
+The different datasets have identical means, standard deviations, and correlations, is it safe to conclude that the spread of points to look similar in all cases? Why or why not?/ Is it possible for datasets to have identical summary statistics yet represent fundamentally different underlying distributions?
+
+*TO ADD: Question Answers*
+
+Run the following code to visualize the dino dataset.
+
+```{webr}
+    #| exercise: ex_2
+    dat <- datasaurus_dozen
+
+    ggplot(data = subset(dat, dataset == "dino"),
+           mapping = aes(x = x,
+                         y = y)) +
+        geom_point() 
+```
+
+#### Question 3
+
+Have your conclusions changed based on the visualization?
+
+::: {.callout-caution collapse="true"}
+## All datasets visualised
+
+```{r}
+ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+    geom_point()+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset)
+  
+```
+:::
+
+## Visual channels
+
+::: {#fig-palmerpenguins}
+```{r}
+library(palmerpenguins)
+
+ggplot(data = penguins, 
+       mapping = aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(
+    aes(color = species, shape = species),
+    size = 2, 
+    alpha = 0.8 
+  ) +
+  
+  scale_color_manual(
+    values = c("orange", 
+               "purple3", 
+               "seagreen")
+  )
+
+
+```
+:::
+
+::: question
+#### In @fig-palmerpenguins which channel(s) are used to depict species?
+
+::: choices
+::: choice
+Horizontal (x-axis) position of the mark
+:::
+
+::: choice
+Vertical (y-axis) position of the mark
+:::
+
+::: {.choice .correct-choice}
+Colour
+:::
+
+::: {.choice .correct-choice}
+Shape
+:::
+
+::: choice
+Opacity
+:::
+:::
+:::
+
+::: question
+#### In @fig-palmerpenguins which channel(s) are used to depict flipper length?
+
+::: choices
+::: {.choice .correct-choice}
+Horizontal (x-axis) position of the mark
+:::
+
+::: choice
+Vertical (y-axis) position of the mark
+:::
+
+::: choice
+Colour
+:::
+
+::: choice
+Shape
+:::
+
+::: choice
+Opacity
+:::
+:::
+:::
+
+::: question
+#### Using multiple visual channels to represent the same variable is known as:
+
+::: choices
+::: {.choice .correct-choice}
+Redundant coding
+:::
+
+::: choice
+Dimensionality reduction
+:::
+:::
+:::
+
+::: {#fig-palmerpenguins2}
+```{r}
+#| fig-cap-location: top
+
+ggplot(data = penguins, 
+       mapping = aes(x = flipper_length_mm, 
+                     y = bill_length_mm, 
+                     colour = island,
+                     size = body_mass_g)) +
+  geom_point(alpha = 0.8) 
+  
+```
+:::
+
+::: question
+#### Which of the following is correct for @fig-palmerpenguins2?
+
+::: choices
+::: choice
+The size and colour of the marks represent body mass (g) and species, respectively.
+:::
+
+::: {.choice .correct-choice}
+The size and colour of the marks represent body mass (g) and island, respectively.
+:::
+:::
+:::

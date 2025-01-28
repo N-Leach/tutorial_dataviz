@@ -1,0 +1,156 @@
+---
+title: "Lecture 1 using Webexercises"
+---
+
+```{r, echo = FALSE, results='asis'}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(webexercises)
+
+# from Webexercises instructions: 
+## Uncomment to change widget colours:
+#style_widgets(incorrect = "goldenrod", correct = "purple", highlight = "firebrick")
+```
+
+#### Question 1
+
+```{r}
+#| label: fig-mtcars
+
+ggplot(data = mtcars,
+       mapping = aes(x = disp, y = mpg,
+                     colour = hp, 
+                     size = wt, 
+                     shape = as.factor(cyl))) +
+  geom_point() +
+  scale_colour_gradient2(low = "#064352",mid ="#329d85",  high = "#d2f2a0", midpoint = 200)+
+  scale_shape_manual(values = c(18,17,19)) +
+  
+  guides(colour = guide_colourbar(order = 1, 
+                                  title = "power (hp)", 
+                                  position = "inside"),
+         
+         size = guide_legend(order = 2, 
+                             title = "weight (1000lbs)", 
+                             override.aes = list(colour = "#329d85"), 
+                             position = "inside"),
+         shape = guide_legend(order = 3, 
+                              title = "cylinders", 
+                              title.hjust=0.5,
+                              override.aes = list(colour = "#329d85"), 
+                              position = "inside")
+        ) +
+  
+  theme_light()+ 
+  theme(
+    legend.position.inside = c(.7, .8),
+    legend.box = "horizontal",
+    legend.position = "top",
+    legend.box.background = element_rect(fill = "white", colour = "white"),
+    legend.title = element_text(hjust =0.5))
+  
+
+
+
+```
+
+
+Select the correct channel for each variable:\
+- disp: `r mcq(c(answer = "Position","Colour", "Shape","Opacity", "Size"))`\
+- power (hp): `r mcq(c("Position",answer = "Colour", "Shape","Opacity", "Size"))`\
+- weight: `r mcq(c("Position","Colour", "Shape","Opacity", answer = "Size"))`\
+- mpg: `r mcq(c(answer = "Position","Colour", "Shape","Opacity", "Size"))`\
+- cylinders: `r mcq(c("Position","Colour", answer = "Shape","Opacity", "Size"))`
+
+#### Question 2
+
+```{r}
+#| label: fig-colour_issues1
+library(usdata)
+data(county)
+ggplot(data = county, 
+       mapping = aes(x = per_capita_income , 
+                     y = pop_change, 
+                     colour = state))+
+geom_point(alpha = 0.5) +
+  labs(y = "Population change", 
+       x = "Per capita income")
+```
+
+True or False: The use of colour in this plot effectively distinguishes all states without causing visual clutter or confusion.`r torf(FALSE)`
+
+#### Question 3
+
+
+```{r}
+#| label: fig-colour_issues2
+
+library(palmerpenguins)
+library(patchwork)
+dat <- penguins |>
+  group_by(species) |> 
+  count() |>
+  ungroup() |> 
+  mutate(perc = `n` / sum(`n`)) |> 
+  arrange(perc) |>
+  mutate(labels = scales::percent(perc))
+
+
+base <- ggplot(data = dat,
+               mapping = aes(x = "",
+                             y = perc,
+                             fill = species)) +
+  geom_col() +
+  coord_polar(theta = 'y') +
+  theme_void() 
+
+low_contrast <- base +
+  scale_fill_manual(name = NULL, 
+                    values = c("#ccece6",
+                               "#99d8c9",
+                               "#66c2a4"))
+
+colorblind_friendly <- base +
+  scale_fill_manual(name = NULL, 
+                    values = c("#e69f00",
+                               "#009e73",
+                               "#56b4e9"))
+
+not_colorblind_safe <- base +
+  scale_fill_manual(name = NULL, 
+                    values = c("#fd2819",
+                               "#027902",
+                               "#8A8600"))
+overly_saturated <- base +
+  scale_fill_manual(name = NULL, 
+                    values = c("#ff0000",  
+                               "#00ff00",  
+                               "#0000ff")) 
+
+
+low_contrast+
+not_colorblind_safe+
+overly_saturated+
+colorblind_friendly+
+  plot_annotation(tag_levels = "A")
+```
+
+
+Select the correct plot for each of the use of colour for each description:
+
+-   Colours are appropriately chosen, balancing contrast and visual clarity: `r mcq(c("A", "B", "C", answer = "D"))`
+
+-   Highly saturated colours can visually overwhelming (Ugly?): `r mcq(c("A", "B", answer = "C", "D"))`
+
+-   Colours are diverging, which is inappropriate for categorical data: `r mcq(c(answer = "A", "B", "C", "D"))`
+
+-   Colours are not very distinguishable, issues for colour blindness: `r mcq(c("A", answer = "B", "C", "D"))`
+
+
+::: {.callout-tip collapse="true"}  
+
+## @fig-colour_issues2 
+
+[Colour blindness simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/): Plot above recoloured to simulate deuteranopia --- a type of red-green colour blindness. ![](figures/deuteranopia_sim.png)
+
+:::
