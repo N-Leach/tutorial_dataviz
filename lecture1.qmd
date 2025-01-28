@@ -14,7 +14,7 @@ filters:
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ::: callout-tip
-Lecture 1 exercises using naquiz/nareal
+Lecture 1 exercises using [naquiz/nareal](https://github.com/nareal/naquiz)
 :::
 
 ```{r set_up}
@@ -129,7 +129,7 @@ ggplot(data = penguins,
 :::
 
 ::: question
-#### In @fig-palmerpenguins which channel(s) are used to depict species?
+#### Q1: In @fig-palmerpenguins which channel(s) are used to depict species?
 
 ::: choices
 ::: choice
@@ -155,7 +155,7 @@ Opacity
 :::
 
 ::: question
-#### In @fig-palmerpenguins which channel(s) are used to depict flipper length?
+#### Q2: In @fig-palmerpenguins which channel(s) are used to depict flipper length?
 
 ::: choices
 ::: {.choice .correct-choice}
@@ -181,7 +181,7 @@ Opacity
 :::
 
 ::: question
-#### Using multiple visual channels to represent the same variable is known as:
+#### Q3: Using multiple visual channels to represent the same variable is known as:
 
 ::: choices
 ::: {.choice .correct-choice}
@@ -209,7 +209,7 @@ ggplot(data = penguins,
 :::
 
 ::: question
-#### Which of the following is correct for @fig-palmerpenguins2?
+#### Q4: Which of the following is correct for @fig-palmerpenguins2?
 
 ::: choices
 ::: choice
