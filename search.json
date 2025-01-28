@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "lecture1.html",
+    "href": "lecture1.html",
+    "title": "Lecture 1",
+    "section": "",
+    "text": "Tip\n\n\n\nLecture 1 exercises using naquiz/nareal"
+  },
+  {
+    "objectID": "lecture1.html#power-of-visualization",
+    "href": "lecture1.html#power-of-visualization",
+    "title": "Lecture 1",
+    "section": "Power of visualization",
+    "text": "Power of visualization\nYou are provided with a table summarising several datasets. Look at the summary statistics carefully and answer the questions below based on your interpretation of the data.\n\n\n\n\n\ndataset\nx_mean\nx_sd\ny_mean\ny_sd\ncorr\n\n\n\n\ndino\n54.26327\n16.76514\n47.83225\n26.93540\n-0.0644719\n\n\naway\n54.26610\n16.76983\n47.83472\n26.93974\n-0.0641284\n\n\nh_lines\n54.26144\n16.76590\n47.83025\n26.93988\n-0.0617148\n\n\nv_lines\n54.26993\n16.76996\n47.83699\n26.93768\n-0.0694456\n\n\nx_shape\n54.26015\n16.76996\n47.83972\n26.93000\n-0.0655833\n\n\nstar\n54.26734\n16.76896\n47.83955\n26.93027\n-0.0629611\n\n\nhigh_lines\n54.26881\n16.76670\n47.83545\n26.94000\n-0.0685042\n\n\ndots\n54.26030\n16.76774\n47.83983\n26.93019\n-0.0603414\n\n\ncircle\n54.26732\n16.76001\n47.83772\n26.93004\n-0.0683434\n\n\nbullseye\n54.26873\n16.76924\n47.83082\n26.93573\n-0.0685864\n\n\nslant_up\n54.26588\n16.76885\n47.83150\n26.93861\n-0.0686092\n\n\nslant_down\n54.26785\n16.76676\n47.83590\n26.93610\n-0.0689797\n\n\nwide_lines\n54.26692\n16.77000\n47.83160\n26.93790\n-0.0665752\n\n\n\n\n\n\n\n\nQuestion 1\n\nSince the datasets have nearly identical means, standard deviations, and correlations, what can you infer about the spread of points?\n\n\n\n\n ✗All datasets will likely have identical visual patterns\n\n\n ✗The datasets may have similar visual spreads but differ in shape\n\n\n ✓None, no conclusions about the distribution of the points can be made\n\n\n\n\n\n\n\nQuestion 2\nThe different datasets have identical means, standard deviations, and correlations, is it safe to conclude that the spread of points to look similar in all cases? Why or why not?/ Is it possible for datasets to have identical summary statistics yet represent fundamentally different underlying distributions?\nTO ADD: Question Answers\nRun the following code to visualize the dino dataset.\n\n\n\n\n\n\n\n\n\n\nQuestion 3\nHave your conclusions changed based on the visualization?\n\n\n\n\n\n\nAll datasets visualised"
+  },
+  {
+    "objectID": "lecture1.html#visual-channels",
+    "href": "lecture1.html#visual-channels",
+    "title": "Lecture 1",
+    "section": "Visual channels",
+    "text": "Visual channels\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ1: In Figure 1 which channel(s) are used to depict species?\n\n\n\n\n ✗Horizontal (x-axis) position of the mark\n\n\n ✗Vertical (y-axis) position of the mark\n\n\n ✓Colour\n\n\n ✓Shape\n\n\n ✗Opacity\n\n\n\n\n\n\nQ2: In Figure 1 which channel(s) are used to depict flipper length?\n\n\n\n\n ✓Horizontal (x-axis) position of the mark\n\n\n ✗Vertical (y-axis) position of the mark\n\n\n ✗Colour\n\n\n ✗Shape\n\n\n ✗Opacity\n\n\n\n\n\n\nQ3: Using multiple visual channels to represent the same variable is known as:\n\n\n\n\n ✓Redundant coding\n\n\n ✗Dimensionality reduction\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ4: Which of the following is correct for Figure 2?\n\n\n\n\n ✗The size and colour of the marks represent body mass (g) and species, respectively.\n\n\n ✓The size and colour of the marks represent body mass (g) and island, respectively."
+  },
+  {
+    "objectID": "lecture1_2.html",
+    "href": "lecture1_2.html",
+    "title": "Lecture 1 using Webexercises",
+    "section": "",
+    "text": "Question 1\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\nSelect the correct channel for each variable:\n- disp: PositionColourShapeOpacitySize\n- power (hp): PositionColourShapeOpacitySize\n- weight: PositionColourShapeOpacitySize\n- mpg: PositionColourShapeOpacitySize\n- cylinders: PositionColourShapeOpacitySize\n\n\nQuestion 2\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\nTrue or False: The use of colour in this plot effectively distinguishes all states without causing visual clutter or confusion.TRUEFALSE\n\n\nQuestion 3\n\n\n\n\n\nFigure 3\n\n\n\n\n\n\n\n\nSelect the correct plot for each of the use of colour for each description:\n\nColours are appropriately chosen, balancing contrast and visual clarity: ABCD\nHighly saturated colours can visually overwhelming (Ugly?): ABCD\nColours are diverging, which is inappropriate for categorical data: ABCD\nColours are not very distinguishable, issues for colour blindness: ABCD\n\n\n\n\n\n\n\nFigure 3\n\n\n\n\n\nColour blindness simulator: Plot above recoloured to simulate deuteranopia — a type of red-green colour blindness."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Example",
+    "section": "",
+    "text": "Testing out interactive learning tools"
+  }
+]
